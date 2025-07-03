@@ -1,18 +1,20 @@
 #ifndef AES_H
 #define AES_H
+
 #include <vector>
 #include <cstdint>
 #include <string>
 
-class AES128
-{
+using namespace std;
+
+class AES128 {
 public:
-    AES128(const std::vector<uint8_t> &key);
-    std::vector<uint8_t> encrypt(const std::vector<uint8_t> &data);
-    std::vector<uint8_t> decrypt(const std::vector<uint8_t> &data);
+    AES128(const vector<uint8_t> &key);
+    vector<uint8_t> encrypt(const vector<uint8_t> &data);
+    vector<uint8_t> decrypt(const vector<uint8_t> &data);
 
 private:
-    void keyExpansion(const std::vector<uint8_t> &key);
+    void keyExpansion(const vector<uint8_t> &key);
     void addRoundKey(uint8_t *state, int round);
     void subBytes(uint8_t *state);
     void invSubBytes(uint8_t *state);
@@ -23,7 +25,7 @@ private:
     void encryptBlock(uint8_t *state);
     void decryptBlock(uint8_t *state);
     static uint8_t mul(uint8_t x, uint8_t y);
-    std::vector<uint8_t> roundKeys;
+    vector<uint8_t> roundKeys;
 };
 
 #endif // AES_H
